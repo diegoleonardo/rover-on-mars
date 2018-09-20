@@ -2,34 +2,34 @@
 {
     public class Rover
     {
-        private const int MAX_POSITION_X = 0;
-        private const int MAX_POSITION_Y = 4;
+        private const int MIN_POSITION = 0;
+        private const int MAX_POSITION = 4;
         private RoverPosition Position { get; set; }
-        private Facing Facing { get; set; }
+        private RoverFacing Facing { get; set; }
 
-        private bool CanMove(RoverFacing facing)
+        private bool CanMove(FacingTypes facing)
         {
             switch (facing)
             {
-                case RoverFacing.North:
-                    return this.Position.PositionX > 0;
-                case RoverFacing.West:
-                    return this.Position.PositionY > 0;
-                case RoverFacing.East:
-                    return this.Position.PositionY < 5;
-                case RoverFacing.South:
-                    return this.Position.PositionX < 5;
+                case FacingTypes.North:
+                    return this.Position.PositionX > MIN_POSITION;
+                case FacingTypes.West:
+                    return this.Position.PositionY > MIN_POSITION;
+                case FacingTypes.East:
+                    return this.Position.PositionY < MAX_POSITION;
+                case FacingTypes.South:
+                    return this.Position.PositionX < MAX_POSITION;
                 default:
                     return true;
             }
         }
 
-        public Rover(int positionX, int positionY, RoverFacing facing)
+        public Rover(int positionX, int positionY, FacingTypes facing)
         {
-            var posX = positionX > MAX_POSITION_X ? positionX : MAX_POSITION_X;
-            var posY = positionY < MAX_POSITION_Y ? positionY : MAX_POSITION_Y;
+            var posX = positionX > MIN_POSITION ? positionX : MIN_POSITION;
+            var posY = positionY < MAX_POSITION ? positionY : MAX_POSITION;
             this.Position = new RoverPosition(posX, posY);
-            this.Facing = new Facing(facing);
+            this.Facing = new RoverFacing(facing);
         }
 
         public void MoveForward()
@@ -53,9 +53,14 @@
             return $"{this.Position.PositionX},{this.Position.PositionY}";
         }
 
-        public RoverFacing FacingTo()
+        public FacingTypes FacingTo()
         {
             return this.Facing.CurrentFacing;
+        }
+
+        public string GetCoordinates()
+        {
+            return $"Rover is now at {CurrenPosition()} - facing {FacingTo()}";
         }
     }
 }

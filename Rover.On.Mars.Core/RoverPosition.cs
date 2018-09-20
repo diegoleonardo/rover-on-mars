@@ -11,20 +11,20 @@
             PositionY = positionY > 0 ? positionY : 0;
         }
 
-        public void ChangePosition(RoverFacing facing)
+        public void ChangePosition(FacingTypes facing)
         {
             switch (facing)
             {
-                case RoverFacing.East:
+                case FacingTypes.East:
                     PositionY++;
                     break;
-                case RoverFacing.South:
+                case FacingTypes.South:
                     PositionX++;
                     break;
-                case RoverFacing.West:
+                case FacingTypes.West:
                     PositionY--;
                     break;
-                case RoverFacing.North:
+                case FacingTypes.North:
                     PositionX--;
                     break;
             }

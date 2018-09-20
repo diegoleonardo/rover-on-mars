@@ -9,56 +9,56 @@ namespace Rover.On.Mars.Core.Tests
         public void Must_be_changed_facing_to_west_when_rotate_to_left()
         {
             // ARRANGE
-            var facing = new Facing(RoverFacing.North);
+            var facing = new RoverFacing(FacingTypes.North);
 
             // ACT
             facing.MoveToLeft();
 
             // ASSERT
             Assert.IsNotNull(facing);
-            Assert.AreEqual(RoverFacing.West, facing.CurrentFacing);
+            Assert.AreEqual(FacingTypes.West, facing.CurrentFacing);
         }
 
         [TestMethod]
         public void Must_be_changed_facing_to_south_when_rotate_to_left()
         {
             // ARRANGE
-            var facing = new Facing(RoverFacing.West);
+            var facing = new RoverFacing(FacingTypes.West);
 
             // ACT
             facing.MoveToLeft();
 
             // ASSERT
             Assert.IsNotNull(facing);
-            Assert.AreEqual(RoverFacing.South, facing.CurrentFacing);
+            Assert.AreEqual(FacingTypes.South, facing.CurrentFacing);
         }
 
         [TestMethod]
         public void Must_be_changed_facing_to_east_when_rotate_to_left()
         {
             // ARRANGE
-            var facing = new Facing(RoverFacing.South);
+            var facing = new RoverFacing(FacingTypes.South);
 
             // ACT
             facing.MoveToLeft();
 
             // ASSERT
             Assert.IsNotNull(facing);
-            Assert.AreEqual(RoverFacing.East, facing.CurrentFacing);
+            Assert.AreEqual(FacingTypes.East, facing.CurrentFacing);
         }
 
         [TestMethod]
         public void Must_be_changed_facing_to_north_when_rotate_to_left()
         {
             // ARRANGE
-            var facing = new Facing(RoverFacing.East);
+            var facing = new RoverFacing(FacingTypes.East);
 
             // ACT
             facing.MoveToLeft();
 
             // ASSERT
             Assert.IsNotNull(facing);
-            Assert.AreEqual(RoverFacing.North, facing.CurrentFacing);
+            Assert.AreEqual(FacingTypes.North, facing.CurrentFacing);
         }
     }
 }

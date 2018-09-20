@@ -17,7 +17,7 @@ namespace Rover.On.Mars.Core.Tests
             var position = GenerateRoverPosition(1, 1);
 
             // WHEN
-            position.ChangePosition(RoverFacing.South);
+            position.ChangePosition(FacingTypes.South);
 
             // THEN
             Assert.AreEqual(1, position.PositionY);
@@ -32,7 +32,7 @@ namespace Rover.On.Mars.Core.Tests
             var position = GenerateRoverPosition(0, 3);
 
             // WHEN
-            position.ChangePosition(RoverFacing.East);
+            position.ChangePosition(FacingTypes.East);
 
             // THEN
             Assert.AreEqual(0, position.PositionX);
@@ -49,7 +49,7 @@ namespace Rover.On.Mars.Core.Tests
             var position = new RoverPosition(xAxis, yAxis);
 
             // WHEN
-            position.ChangePosition(RoverFacing.North);
+            position.ChangePosition(FacingTypes.North);
 
             // THEN
             Assert.AreEqual(yAxis, position.PositionY);
@@ -66,7 +66,7 @@ namespace Rover.On.Mars.Core.Tests
             var position = new RoverPosition(xAxis, yAxis);
 
             // WHEN
-            position.ChangePosition(RoverFacing.West);
+            position.ChangePosition(FacingTypes.West);
 
             // THEN
             Assert.AreEqual(xAxis, position.PositionX);

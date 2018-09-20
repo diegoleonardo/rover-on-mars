@@ -5,7 +5,7 @@ namespace Rover.On.Mars.Core.Tests
     [TestClass]
     public class RoverTest
     {
-        private Rover GenerateRover(int positionX, int positionY, RoverFacing facing)
+        private Rover GenerateRover(int positionX, int positionY, FacingTypes facing)
         {
             return new Rover(positionX, positionY, facing);
         }
@@ -14,7 +14,7 @@ namespace Rover.On.Mars.Core.Tests
         public void Must_be_move_forward()
         {
             // GIVEN
-            var rover = GenerateRover(1, 1, RoverFacing.North);
+            var rover = GenerateRover(1, 1, FacingTypes.North);
 
             // WHEN
             rover.MoveForward();
@@ -27,7 +27,7 @@ namespace Rover.On.Mars.Core.Tests
         public void Must_be_possible_seeing_rover_position()
         {
             // GIVEN
-            var rover = GenerateRover(1, 1, RoverFacing.North);
+            var rover = GenerateRover(1, 1, FacingTypes.North);
 
             // WHEN
             var currentPosition = rover.CurrenPosition();
@@ -40,7 +40,7 @@ namespace Rover.On.Mars.Core.Tests
         public void Must_be_not_possible_move_rover_outside_confines_of_the_grid()
         {
             // GIVEN
-            var rover = GenerateRover(0, 0, RoverFacing.West);
+            var rover = GenerateRover(0, 0, FacingTypes.West);
 
             // WHEN
             rover.MoveForward();
@@ -54,26 +54,26 @@ namespace Rover.On.Mars.Core.Tests
         public void Must_be_rotated_from_north_to_west_with_rotate_to_left()
         {
             // GIVEN
-            var rover = GenerateRover(0, 1, RoverFacing.North);
+            var rover = GenerateRover(0, 1, FacingTypes.North);
 
             // WHEN
             rover.Rotate("L");
 
             // THEN
-            Assert.AreEqual(RoverFacing.West, rover.FacingTo());
+            Assert.AreEqual(FacingTypes.West, rover.FacingTo());
         }
 
         [TestMethod]
         public void Must_be_rotated_from_north_to_east_with_rotate_to_right()
         {
             // GIVEN
-            var rover = GenerateRover(0, 0, RoverFacing.North);
+            var rover = GenerateRover(0, 0, FacingTypes.North);
 
             // WHEN
             rover.Rotate("R");
 
             // THEN
-            Assert.AreEqual(RoverFacing.East, rover.FacingTo());
+            Assert.AreEqual(FacingTypes.East, rover.FacingTo());
         }
     }
 }
