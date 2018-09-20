@@ -6,7 +6,7 @@ namespace Rover.On.Mars.Core.Tests
     public class RoverRotateToRightTest
     {
         [TestMethod]
-        public void Must_be_changed_facing_to_east_when_rotate_to_right()
+        public void Should_change_facing_to_east_when_rotate_to_right()
         {
             // GIVEN
             var facing = new RoverFacing(FacingTypes.North);
@@ -20,7 +20,7 @@ namespace Rover.On.Mars.Core.Tests
         }
 
         [TestMethod]
-        public void Must_be_changed_facing_to_south_when_rotate_to_right()
+        public void Should_change_facing_to_south_when_rotate_to_right()
         {
             // GIVEN
             var facing = new RoverFacing(FacingTypes.East);
@@ -34,7 +34,7 @@ namespace Rover.On.Mars.Core.Tests
         }
 
         [TestMethod]
-        public void Must_be_changed_facing_to_west_when_rotate_to_right()
+        public void Should_change_facing_to_west_when_rotate_to_right()
         {
             // GIVEN
             var facing = new RoverFacing(FacingTypes.South);
@@ -48,7 +48,7 @@ namespace Rover.On.Mars.Core.Tests
         }
 
         [TestMethod]
-        public void Must_be_changed_facing_to_north_rotate_to_right()
+        public void Should_change_facing_to_north_rotate_to_right()
         {
             // GIVEN
             var facing = new RoverFacing(FacingTypes.West);

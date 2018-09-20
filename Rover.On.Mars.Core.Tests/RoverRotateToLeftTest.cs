@@ -6,57 +6,57 @@ namespace Rover.On.Mars.Core.Tests
     public class RoverRotateToLeftTest
     {
         [TestMethod]
-        public void Must_be_changed_facing_to_west_when_rotate_to_left()
+        public void Should_change_facing_to_west_when_rotate_to_left()
         {
-            // ARRANGE
+            // GIVEN
             var facing = new RoverFacing(FacingTypes.North);
 
-            // ACT
+            // WHEN
             facing.MoveToLeft();
 
-            // ASSERT
+            // THEN
             Assert.IsNotNull(facing);
             Assert.AreEqual(FacingTypes.West, facing.CurrentFacing);
         }
 
         [TestMethod]
-        public void Must_be_changed_facing_to_south_when_rotate_to_left()
+        public void Should_change_facing_to_south_when_rotate_to_left()
         {
-            // ARRANGE
+            // GIVEN
             var facing = new RoverFacing(FacingTypes.West);
 
-            // ACT
+            // WHEN
             facing.MoveToLeft();
 
-            // ASSERT
+            // THEN
             Assert.IsNotNull(facing);
             Assert.AreEqual(FacingTypes.South, facing.CurrentFacing);
         }
 
         [TestMethod]
-        public void Must_be_changed_facing_to_east_when_rotate_to_left()
+        public void Should_change_facing_to_east_when_rotate_to_left()
         {
-            // ARRANGE
+            // GIVEN
             var facing = new RoverFacing(FacingTypes.South);
 
-            // ACT
+            // WHEN
             facing.MoveToLeft();
 
-            // ASSERT
+            // THEN
             Assert.IsNotNull(facing);
             Assert.AreEqual(FacingTypes.East, facing.CurrentFacing);
         }
 
         [TestMethod]
-        public void Must_be_changed_facing_to_north_when_rotate_to_left()
+        public void Should_change_facing_to_north_when_rotate_to_left()
         {
-            // ARRANGE
+            // GIVEN
             var facing = new RoverFacing(FacingTypes.East);
 
-            // ACT
+            // WHEN
             facing.MoveToLeft();
 
-            // ASSERT
+            // THEN
             Assert.IsNotNull(facing);
             Assert.AreEqual(FacingTypes.North, facing.CurrentFacing);
         }

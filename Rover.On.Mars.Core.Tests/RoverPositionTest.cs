@@ -11,7 +11,7 @@ namespace Rover.On.Mars.Core.Tests
         }
 
         [TestMethod]
-        public void Must_be_will_increment_positionX()
+        public void Should_increase_positionX_when_change_position_and_facing_to_south()
         {
             // GIVEN 
             var position = GenerateRoverPosition(1, 1);
@@ -26,7 +26,7 @@ namespace Rover.On.Mars.Core.Tests
         }
 
         [TestMethod]
-        public void Must_be_will_increment_positionY()
+        public void Should_increase_positionY_when_change_position_and_facing_to_east()
         {
             // GIVEN
             var position = GenerateRoverPosition(0, 3);
@@ -41,37 +41,37 @@ namespace Rover.On.Mars.Core.Tests
         }
 
         [TestMethod]
-        public void Must_be_decremented_positionX()
+        public void Should_decrease_positionX_when_change_position_and_facing_to_north()
         {
             // GIVEN
-            var xAxis = 1;
-            var yAxis = 1;
-            var position = new RoverPosition(xAxis, yAxis);
+            var positionX = 1;
+            var positionY = 1;
+            var position = new RoverPosition(positionX, positionY);
 
             // WHEN
             position.ChangePosition(FacingTypes.North);
 
             // THEN
-            Assert.AreEqual(yAxis, position.PositionY);
-            Assert.AreNotEqual(xAxis, position.PositionX);
-            Assert.AreEqual((xAxis - 1), position.PositionX);
+            Assert.AreEqual(positionY, position.PositionY);
+            Assert.AreNotEqual(positionX, position.PositionX);
+            Assert.AreEqual((positionX - 1), position.PositionX);
         }
 
         [TestMethod]
-        public void Must_be_decremented_positionY()
+        public void Should_decrease_positionY_when_change_position_and_facing_to_west()
         {
             // GIVEN
-            var xAxis = 0;
-            var yAxis = 10;
-            var position = new RoverPosition(xAxis, yAxis);
+            var positionX = 0;
+            var positionY = 10;
+            var position = new RoverPosition(positionX, positionY);
 
             // WHEN
             position.ChangePosition(FacingTypes.West);
 
             // THEN
-            Assert.AreEqual(xAxis, position.PositionX);
-            Assert.AreNotEqual(yAxis, position.PositionY);
-            Assert.AreEqual((yAxis - 1), position.PositionY);
+            Assert.AreEqual(positionX, position.PositionX);
+            Assert.AreNotEqual(positionY, position.PositionY);
+            Assert.AreEqual((positionY - 1), position.PositionY);
         }
     }
 }
