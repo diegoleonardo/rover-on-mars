@@ -2,9 +2,6 @@
 {
     public class Rover
     {
-        private const string ROTATE_TO_LEFT = "L";
-        private const string ROTATE_TO_RIGHT = "R";
-        private const string MOVE_FORWARD = "F";
         private RoverPosition Position { get; set; }
         private RoverFacing Facing { get; set; }
         private RoverConfiguration Configuration { get; set; }
