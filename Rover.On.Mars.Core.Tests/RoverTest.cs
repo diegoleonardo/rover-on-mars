@@ -17,7 +17,7 @@ namespace Rover.On.Mars.Core.Tests
             var rover = GenerateRover(1, 1, FacingTypes.North);
 
             // WHEN
-            rover.MoveForward();
+            rover.ExecuteCommand("F");
 
             // THEN
             Assert.AreEqual("0,1", rover.CurrenPosition());
@@ -43,7 +43,7 @@ namespace Rover.On.Mars.Core.Tests
             var rover = GenerateRover(0, 0, FacingTypes.West);
 
             // WHEN
-            rover.MoveForward();
+            rover.ExecuteCommand("F");
             var currentPosition = rover.CurrenPosition();
 
             // THEN
@@ -57,7 +57,7 @@ namespace Rover.On.Mars.Core.Tests
             var rover = GenerateRover(0, 1, FacingTypes.North);
 
             // WHEN
-            rover.Rotate("L");
+            rover.ExecuteCommand("L");
 
             // THEN
             Assert.AreEqual(FacingTypes.West, rover.FacingTo());
@@ -70,7 +70,7 @@ namespace Rover.On.Mars.Core.Tests
             var rover = GenerateRover(0, 0, FacingTypes.North);
 
             // WHEN
-            rover.Rotate("R");
+            rover.ExecuteCommand("R");
 
             // THEN
             Assert.AreEqual(FacingTypes.East, rover.FacingTo());

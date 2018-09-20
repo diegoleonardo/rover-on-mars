@@ -4,12 +4,15 @@
     {
         private const int MIN_POSITION = 0;
         private const int MAX_POSITION = 4;
+        private const string ROTATE_TO_LEFT = "L";
+        private const string ROTATE_TO_RIGHT = "R";
+        private const string MOVE_FORWARD = "F";
         private RoverPosition Position { get; set; }
         private RoverFacing Facing { get; set; }
 
-        private bool CanMove(FacingTypes facing)
+        private bool CanMove()
         {
-            switch (facing)
+            switch (this.Facing.CurrentFacing)
             {
                 case FacingTypes.North:
                     return this.Position.PositionX > MIN_POSITION;
@@ -24,6 +27,22 @@
             }
         }
 
+        private void MoveForward()
+        {
+            if (CanMove())
+            {
+                this.Position.ChangePosition(this.Facing.CurrentFacing);
+            }
+        }
+
+        private void Rotate(string direction)
+        {
+            if (direction.Equals(ROTATE_TO_RIGHT))
+                this.Facing.MoveToRight();
+            else
+                this.Facing.MoveToLeft();
+        }
+
         public Rover(int positionX, int positionY, FacingTypes facing)
         {
             var posX = positionX > MIN_POSITION ? positionX : MIN_POSITION;
@@ -32,20 +51,16 @@
             this.Facing = new RoverFacing(facing);
         }
 
-        public void MoveForward()
+        public void ExecuteCommand(string command)
         {
-            if (CanMove(this.Facing.CurrentFacing))
+            if(command.Equals(MOVE_FORWARD))
             {
-                this.Position.ChangePosition(this.Facing.CurrentFacing);
+                MoveForward();
             }
-        }
-
-        public void Rotate(string direction)
-        {
-            if (direction.Equals("L"))
-                this.Facing.MoveToLeft();
             else
-                this.Facing.MoveToRight();
+            {
+                Rotate(command);
+            }
         }
 
         public string CurrenPosition()
