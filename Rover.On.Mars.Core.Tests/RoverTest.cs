@@ -7,11 +7,10 @@ namespace Rover.On.Mars.Core.Tests
     {
         private Rover GenerateRover(int positionX, int positionY, FacingTypes facingTo)
         {
-            var roverPosition = new RoverPosition(positionX, positionY);
-            var roverFacing = new RoverFacing(facingTo);
-            var configuration = new RoverConfiguration();
+            var roverInitialconfiguration = new RoverConfiguration();
+            var roverInitialState = new RoverState(positionX, positionY, facingTo, roverInitialconfiguration);
 
-            return new Rover(roverPosition, roverFacing, configuration);
+            return new Rover(roverInitialState);
         }
 
         [TestMethod]

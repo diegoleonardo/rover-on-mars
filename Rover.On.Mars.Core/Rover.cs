@@ -1,54 +1,34 @@
-﻿namespace Rover.On.Mars.Core
+﻿using Rover.On.Mars.Core.Commands;
+using System.Collections.Generic;
+
+namespace Rover.On.Mars.Core
 {
     public class Rover
     {
-        private RoverPosition Position { get; set; }
-        private RoverFacing Facing { get; set; }
-        private RoverConfiguration Configuration { get; set; }
+        private RoverState State { get; set; }
+        private IDictionary<CommandTypes, IMoveCommandStrategy> _strategies = new Dictionary<CommandTypes, IMoveCommandStrategy>();
 
-        private void MoveForward()
+        public Rover(RoverState initialState)
         {
-            if (Configuration.CanMove(Facing.CurrentFacing, Position))
-            {
-                Position.ChangePosition(Facing.CurrentFacing);
-            }
-        }
-
-        private void Rotate(CommandTypes direction)
-        {
-            if (direction.Equals(CommandTypes.ROTATE_TO_RIGHT))
-                Facing.MoveToRight();
-            else
-                Facing.MoveToLeft();
-        }
-
-        public Rover(RoverPosition initalPosition, RoverFacing initialFacing, RoverConfiguration configuration)
-        {
-            Position = initalPosition;
-            Facing = initialFacing;
-            Configuration = configuration;
+            this.State = initialState;
+            _strategies.Add(CommandTypes.MOVE_FORWARD, new MoveForward());
+            _strategies.Add(CommandTypes.ROTATE_TO_RIGHT, new MoveToRight());
+            _strategies.Add(CommandTypes.ROTATE_TO_LEFT, new MoveToLeft());
         }
 
         public void ExecuteCommand(CommandTypes command)
         {
-            if(command.Equals(CommandTypes.MOVE_FORWARD))
-            {
-                MoveForward();
-            }
-            else
-            {
-                Rotate(command);
-            }
+            _strategies[command].Move(this.State);
         }
 
         public string CurrenPosition()
         {
-            return $"{Position.PositionX},{Position.PositionY}";
+            return $"{State.PositionX},{State.PositionY}";
         }
 
         public FacingTypes FacingTo()
         {
-            return Facing.CurrentFacing;
+            return State.CurrentFacing;
         }
 
         public string GetCoordinates()
