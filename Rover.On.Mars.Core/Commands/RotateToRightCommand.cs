@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace Rover.On.Mars.Core.Commands
 {
-    public class MoveToRight : IMoveCommandStrategy
+    public class RotateToRightCommand : IMoveCommand
     {
         private IDictionary<FacingTypes, IRotate> _rotatesToRight = new Dictionary<FacingTypes, IRotate>();
 
-        public MoveToRight()
+        public RotateToRightCommand()
         {
             _rotatesToRight.Add(FacingTypes.North, new RotateToRightFromNorth());
             _rotatesToRight.Add(FacingTypes.South, new RotateToRightFromSouth());
@@ -16,7 +16,7 @@ namespace Rover.On.Mars.Core.Commands
             _rotatesToRight.Add(FacingTypes.West, new RotateToRightFromWest());
         }
 
-        public void Move(RoverState state)
+        public void ExecuteCommand(RoverState state)
         {
             state.CurrentFacing = _rotatesToRight[state.CurrentFacing].Rotate();
         }
